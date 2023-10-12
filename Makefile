@@ -2,10 +2,10 @@ BUILD_PDF := ./build_pdf
 RESULT := ./result
 SRC_TEX := ./src_tex
 MAIN_SRC := result.tex
-
+FUNCTIONS_PATH := ./src/functions
 COMPILER_TEX_PREFIX := TEXINPUTS=".:$(BUILD_PDF):"
 COMPILER_TEX_FLAGS := -output-directory $(BUILD_PDF)/ $(MAIN_SRC)
-
+DATA_FILE_PATH := ./default.txt
 COMPILER_TEX := $(COMPILER_TEX_PREFIX) pdflatex $(COMPILER_TEX_FLAGS)
 
 
@@ -25,7 +25,8 @@ get_result: preparing_input_data
 	flatpak run org.octave.Octave Test.m > octave.log
 
 preparing_input_data:
-		bash ru2en.sh ans
+	bash $(FUNCTIONS_PATH)/SDN.sh ${DATA_FILE_PATH} ${BUILD_PDF}/ans
+	bash $(FUNCTIONS_PATH)/PreparationSingle-columnTable.sh ${BUILD_PDF}/ans ${BUILD_PDF}/ans
 
 $(BUILD_PDF):
 	mkdir -p $@

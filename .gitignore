@@ -1,2 +1,4 @@
 *.pdf
-./build*
+*.log
+build_pdf
+
