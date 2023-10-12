@@ -1,1 +1,2 @@
-# Combine solutions for mathematical statistics problems
+# CSMSP
+Combine solutions for mathematical statistics problems
