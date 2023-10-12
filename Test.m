@@ -1,4 +1,4 @@
-fileName = "ans"
+fileName = "./build_pdf/ans"
 file = fopen(fileName, 'rt')
 
 N = fscanf(file,'%d',1)
@@ -37,7 +37,7 @@ for i=1:colColumn
   X = X + res(1,i)*res(2,i)
 end
 X = X/sum(res(2,:))
-save "X.txt" X
+save "build_pdf/X.txt" X
 % Дисперсия
 S = 0
 colColumn = size(res)(2)
@@ -45,7 +45,7 @@ for i=1:colColumn
   S = S + ((res(1,i) - X)^2)*res(2,i)
 end
 S = S/sum(res(2,:))
-save "S.txt" S
+save "build_pdf/S.txt" S
 % Исправленная дисперсия
 _S = 0
 colColumn = size(res)(2)
@@ -53,7 +53,7 @@ for i=1:colColumn
   _S = _S + ((res(1,i) - X)^2)*res(2,i)
 end
 _S = _S/(sum(res(2,:))-1)
-save "_S.txt" _S
+save "build_pdf/_S.txt" _S
 
 
 % Графики
@@ -83,7 +83,7 @@ disp('Сортированный массив элементов');disp(res);
 disp('Мат. Ожидание = ');disp(X);
 disp('Дисперсия = ');disp(S);
 disp('Исправленная дисперсия = ');disp(_S);
-save "textfile.txt" interval
+save "build_pdf/textfile.txt" interval
 
 plot(grf(1,:),grf(2,:),'linewidth', 1,'o-r')
 %title "Многоугольник распределения"
@@ -91,7 +91,7 @@ xlabel "Var"; ylabel "Col"
 
 axis tight
 grid('on')
-print('MnogoUgolnik','-dpdflatex')
+print('build_pdf/MnogoUgolnik','-dpdflatex')
 
 
 % Эмпирическая ф
@@ -117,8 +117,8 @@ interval(2,end) = inf
 interval(3,end) = (sum(res(2,:)))
 interval(4,end) = sizeDATA
 
-save "foo.txt" interval
-save "raspr.txt" res
+save "build_pdf/foo.txt" interval
+save "build_pdf/raspr.txt" res
 
 
 size_grf = (interval(1,end) - interval(2,1))/3
@@ -148,7 +148,7 @@ xlabel "Var"; ylabel "Col"
 
 axis tight
 grid('on')
-print('fooGrf','-dpdflatex')
+print('build_pdf/fooGrf','-dpdflatex')
 
 hold('off')
 
@@ -194,6 +194,6 @@ xlabel "Var"; ylabel "Col"
 
 axis tight
 grid('on')
-print('histogramm','-dpdflatex')
+print('build_pdf/histogramm','-dpdflatex')
 
 hold('off')

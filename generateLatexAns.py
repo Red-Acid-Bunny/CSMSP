@@ -5,10 +5,11 @@ from pylatex import Document, Section, Subsection, Tabular, Math, TikZ, Axis, \
 from pylatex.utils import italic
 import os
 
+BUILD = "./build_pdf/"
 
 def foo():
     #foo.txt
-    fileName = "foo.txt"
+    fileName = BUILD + "foo.txt"
     file = open(fileName, 'r')
     columns = 0
     text = []
@@ -65,14 +66,14 @@ def foo():
         output += "\t\t" + i+'\n'
     output += "\t\\end{cases}\n\\end{equation*}"
     
-    fileName = "foo.tex"
+    fileName = BUILD + "foo.tex"
     file = open(fileName,'w')
     file.write(output)
     file.close()
 
 def raspr():
     #foo.txt
-    fileName = "raspr.txt"
+    fileName = BUILD + "raspr.txt"
     file = open(fileName, 'r')
     columns = 0
     text = []
@@ -118,7 +119,7 @@ def raspr():
                 r1 + "\n\t\\hline\\hline\n\t" + r2 + "\n\t\\hline\n\t" + "\n") 
     output += "\\end{tabular}"
     
-    fileName = "raspr.tex"
+    fileName = BUILD + "raspr.tex"
     file = open(fileName,'w')
     print(file)
     print(output)
@@ -140,28 +141,28 @@ def getOneVar(fileName: str):
     file.close()
 
 def X():
-    fileName = "X.txt"
+    fileName = BUILD + "X.txt"
     res = getOneVar(fileName)
     text = "\\textbf{$X$}: $" + str(res) + "$\\\\"
-    fileName = "X.tex"
+    fileName = BUILD + "X.tex"
     file = open(fileName,'w')
     file.write(text)
     file.close()
 
 def S():
-    fileName = "S.txt"
+    fileName = BUILD + "S.txt"
     res = getOneVar(fileName)
     text = "\\textbf{$S$}: $" + str(res) + "$\\\\"
-    fileName = "S.tex"
+    fileName = BUILD + "S.tex"
     file = open(fileName,'w')
     file.write(text)
     file.close()
 
 def _S():
-    fileName = "_S.txt"
+    fileName = BUILD + "_S.txt"
     res = getOneVar(fileName)
     text = "\\textbf{$S^-$}: $" + str(res) + "$\\\\"
-    fileName = "_S.tex"
+    fileName = BUILD + "_S.tex"
     file = open(fileName,'w')
     file.write(text)
     file.close()

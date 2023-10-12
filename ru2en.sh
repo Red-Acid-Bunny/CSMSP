@@ -14,12 +14,12 @@ else
       oFile=""
     else
       iFile="$1"
-      oFile="$2"
+      oFile="build_pdf/$2"
     fi
   else
     if [ -e default.txt ]; then
       iFile=default.txt
-      oFile="$1"
+      oFile="build_pdf/$1"
     else
       echo -e "File 'default.txt' not found"
     fi
