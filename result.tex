@@ -1,0 +1,47 @@
+\documentclass{report}
+\usepackage[T2A]{fontenc}
+\usepackage[dvips]{graphicx} % Required for inserting images
+\usepackage[english, russian]{babel}
+\usepackage{xcolor}
+\usepackage{amsmath}
+
+%\addtolength{\topmargin}{-55mm}
+%\addtolength{\textheight}{55mm}
+\begin{document}
+\title{715}
+\author{Буданов Данила Сереевич}
+\date{\today}
+\maketitle
+\tableofcontents 
+
+\chapter{Распределение}
+\input{raspr.tex}
+
+\chapter{Значения}
+\input{X.tex}
+\input{S.tex}
+\input{_S.tex}
+
+\chapter{Функция распределения}
+\begin{center}
+  \input{foo.tex}
+\end{center}
+\newpage
+\begin{figure}[h]
+\center{\input{fooGrf.tex}}
+\end{figure}
+
+\chapter{Многоугольник распределения}
+\begin{figure}[h]
+\center{\input{MnogoUgolnik.tex}}
+\end{figure}
+
+\chapter{Гистограмма и полигон}
+\begin{figure}[h]
+\center{\input{histogramm.tex}}
+\end{figure}
+
+
+
+
+\end{document}
