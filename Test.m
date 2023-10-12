@@ -186,7 +186,7 @@ end
 _grf(1,end+1) = (_interval(1,end)+_interval(2,end))/2
 _grf(2,end) = 0
 plot(_grf(1,:),_grf(2,:),'linewidth', 1,"^-b")
-h = legend("Гистограмма", "Полигон")
+h = legend("Histogram", "Polygon")
 
 set(h,"fontsize", 20)
 %title "Гистограмма"
@@ -197,4 +197,3 @@ grid('on')
 print('histogramm','-dpdflatex')
 
 hold('off')
-

@@ -1,28 +1,22 @@
-\documentclass{report}
-\usepackage[T2A]{fontenc}
-\usepackage[dvips]{graphicx} % Required for inserting images
-\usepackage[english, russian]{babel}
-\usepackage{xcolor}
-\usepackage{amsmath}
-
+\input{preamble}
 %\addtolength{\topmargin}{-55mm}
 %\addtolength{\textheight}{55mm}
 \begin{document}
-\title{715}
-\author{Буданов Данила Сереевич}
+\input{author}
+\input{name}
 \date{\today}
 \maketitle
 \tableofcontents 
 
-\chapter{Распределение}
+\chapter{Distribution}
 \input{raspr.tex}
 
-\chapter{Значения}
+\chapter{$X,S,S^-$}
 \input{X.tex}
 \input{S.tex}
 \input{_S.tex}
 
-\chapter{Функция распределения}
+\chapter{Distribution function}
 \begin{center}
   \input{foo.tex}
 \end{center}
@@ -31,12 +25,12 @@
 \center{\input{fooGrf.tex}}
 \end{figure}
 
-\chapter{Многоугольник распределения}
+\chapter{Distribution polygon}
 \begin{figure}[h]
 \center{\input{MnogoUgolnik.tex}}
 \end{figure}
 
-\chapter{Гистограмма и полигон}
+\chapter{Histogram and polygon}
 \begin{figure}[h]
 \center{\input{histogramm.tex}}
 \end{figure}

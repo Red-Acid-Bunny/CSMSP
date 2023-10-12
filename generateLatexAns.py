@@ -142,7 +142,7 @@ def getOneVar(fileName: str):
 def X():
     fileName = "X.txt"
     res = getOneVar(fileName)
-    text = "\\textbf{Выборочное среднее}: $" + str(res) + "$\\\\"
+    text = "\\textbf{$X$}: $" + str(res) + "$\\\\"
     fileName = "X.tex"
     file = open(fileName,'w')
     file.write(text)
@@ -151,7 +151,7 @@ def X():
 def S():
     fileName = "S.txt"
     res = getOneVar(fileName)
-    text = "\\textbf{Выборочная дисперсия}: $" + str(res) + "$\\\\"
+    text = "\\textbf{$S$}: $" + str(res) + "$\\\\"
     fileName = "S.tex"
     file = open(fileName,'w')
     file.write(text)
@@ -160,7 +160,7 @@ def S():
 def _S():
     fileName = "_S.txt"
     res = getOneVar(fileName)
-    text = "\\textbf{Исправленная выборочная дисперсия}: $" + str(res) + "$\\\\"
+    text = "\\textbf{$S^-$}: $" + str(res) + "$\\\\"
     fileName = "_S.tex"
     file = open(fileName,'w')
     file.write(text)

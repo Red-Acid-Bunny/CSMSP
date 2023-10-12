@@ -6,5 +6,7 @@ flatpak run org.octave.Octave Test.m > octave.log
 python3 generateLatexAns.py
 pdflatex result.tex
 
-rm ans foo.tex {MnogoUgolnik,fooGrf,histogramm}{-inc,}.{pdf,tex} *.aux *.log textfile.txt *.toc
+# Test.m run.sh ru2en.sh result.tex result.pdf README.md generateLatexAns.py default.txt
+
+rm result.{aux,log,toc} {{foo{,Grf},histogramm,MnogoUgolnik}{,-inc},raspr,X,S,_S}.* octave.log textfile.txt ans
 
