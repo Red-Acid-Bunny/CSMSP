@@ -1,1 +1,3 @@
-PathToDataFile = "./default.txt"
+PathToDataFile = "./ISDataTest.txt"
+Mode = "IntervalSample"
+
