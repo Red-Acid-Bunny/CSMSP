@@ -36,7 +36,7 @@ IntervalSample: $(MODE)_get_result
 
 IntervalSample_get_result: $(MODE)_preparing_input_data
 	echo $@
-	#flatpak run org.octave.Octave Test.m > $(BUILD_PDF)/octave.log
+	flatpak run org.octave.Octave IntervalSampleMain.m  #> $(BUILD_PDF)/octave.log
 
 IntervalSample_preparing_input_data:
 	echo $@
