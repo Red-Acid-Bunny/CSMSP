@@ -23,25 +23,3 @@ function graphs = BGraphEmpiricalDistributionFunction(empiricalFunction)
       graphs(4, i) = temp;
     endif
   end
-% size_grf = (interval(1,end) - interval(2,1))/3
-% interval(1,1) = interval(1,2) - size_grf
-% interval(2,end) = interval(1,end) + size_grf
-%
-% for i=1:size(interval(1,:))(2)
-%   _grf = []
-%   a = [interval(1,i),interval(2,i)]
-%   b = interval(3,i)/interval(4,i)
-%   for j=1:size(a)(2)
-%     _grf(1,j) = a(j)
-%     _grf(2,j) = b
-%   endfor
-%   plot(_grf(1,:),_grf(2,:),'linewidth', 1,"-r")
-%   hold('on')
-%   if _grf(1,1) != interval(1,1)
-%     plot(_grf(1,1),_grf(2,1),'linewidth', 1,"or")
-%   endif
-%   if _grf(1,2) != interval(2,end)
-%     plot(_grf(1,2),_grf(2,2),'linewidth', 1,"|-r")
-%   endif
-%
-% end
