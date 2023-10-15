@@ -64,7 +64,7 @@ SingleColumn: $(MODE)_get_result
 
 SingleColumn_get_result: $(MODE)_preparing_input_data
 	echo $@
-	flatpak run org.octave.Octave Test.m > $(BUILD_PDF)/octave.log
+	flatpak run org.octave.Octave $(MODE)Main.m > $(BUILD_PDF)/octave.log
 
 SingleColumn_preparing_input_data:
 	echo $@

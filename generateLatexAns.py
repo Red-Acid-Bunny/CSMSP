@@ -16,7 +16,7 @@ def foo(BasicName :str):
     for x in file:
         text.append(x)
     file.close()
-    formula = ["\\frac{","}{","} & x \\in \\left( ","; ",' \\right]\\\\']
+    formula = ["\\frac{","}{","} & x \\in \\left[ ","; ",' \\right)\\\\']
     for i in range(len(text[4])):
         if(text[4][i] == ':'):
             columns = int(text[4][i+2:len(text[4])])
@@ -51,11 +51,14 @@ def foo(BasicName :str):
         else:
             d = float(d)
         endStr = formula[4]
-        if(i==columns-1):
-            endStr = "\\right)\\"
+        left = ""
+        if(i==0):
+            left = "} & x \\in \\left( "
+        else:
+            left = "} & x \\in \\left[ "
         r = (formula[0] + str(a) + 
                     formula[1] + str(b) +
-                    formula[2] + str(c) +
+                    left + str(c) +
                     formula[3] + str(d) +
                     endStr)
         result.append(r)
