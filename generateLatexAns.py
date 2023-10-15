@@ -7,9 +7,9 @@ import os
 
 BUILD = "./build_pdf/"
 
-def foo():
+def foo(BasicName :str):
     #foo.txt
-    fileName = BUILD + "foo.txt"
+    fileName = BUILD + BasicName + ".txt"
     file = open(fileName, 'r')
     columns = 0
     text = []
@@ -21,7 +21,6 @@ def foo():
         if(text[4][i] == ':'):
             columns = int(text[4][i+2:len(text[4])])
             break
-    #print(text)
     varStr = []
     for i in text[-6:]:
         varStr.append(i)
@@ -66,14 +65,14 @@ def foo():
         output += "\t\t" + i+'\n'
     output += "\t\\end{cases}\n\\end{equation*}"
     
-    fileName = BUILD + "foo.tex"
+    fileName = BUILD + BasicName + ".tex"
     file = open(fileName,'w')
     file.write(output)
     file.close()
 
-def raspr():
+def raspr(BasicName :str):
     #foo.txt
-    fileName = BUILD + "raspr.txt"
+    fileName = BUILD + BasicName + ".txt"
     file = open(fileName, 'r')
     columns = 0
     text = []
@@ -85,7 +84,6 @@ def raspr():
         if(text[4][i] == ':'):
             columns = int(text[4][i+2:len(text[4])])
             break
-    #print(text)
     varStr = []
     for i in text[-4:]:
         varStr.append(i)
@@ -101,28 +99,40 @@ def raspr():
                 tempStr = ""
             if(j == len(varStr[i])-1):
                 var[i].append(tempStr[0:-1])
-    print(var)
-    r1 = "$x_i$"
-    r2 = "$n_i$"
-    for i in range(0,columns):
+    l1 = "$x_i$"
+    l2 = "$n_i$"
+    output = ""
+    pre = """\\begin{longtable}{|l|l|}
+\\caption{""" + BasicName + """.} \\label{tab:long} \\\\
+
+\\hline \\multicolumn{1}{|c|}{\\textbf{""" + l1 + """}} & \\multicolumn{1}{c|}{\\textbf{""" + l2 + """}}\\\\ \\hline 
+\\endfirsthead
+
+\\multicolumn{2}{c}%
+{{\\bfseries \\tablename\\ \\thetable{} -- continued from previous page}} \\\\
+\\hline \\multicolumn{1}{|c|}{\\textbf{""" + l1 +"""}} & \\multicolumn{1}{c|}{\\textbf{""" + l2 + """}}\\\\ \\hline 
+\\endhead
+
+\\hline \\multicolumn{2}{|r|}{{Continued on next page}} \\\\ \\hline
+\\endfoot
+
+\\hline \\hline
+\\endlastfoot
+"""
+    post = "\\end{longtable}"
+    output += pre
+    output += str(float(var[0][0])) + " & " + str(float(var[1][0])) + "\\\\\n\\hline"
+    for i in range(1,columns):
         a = float(var[0][i])
         b = float(var[1][i])
         endStr = formula[4]
         if(i==columns-1):
             endStr = ""
-        r1 += " & " + str(a)
-        r2 += " & " + str(b)
-    r1 += "\\\\"
-    r2 += "\\\\"
-    output = ""
-    output += ("\\begin{tabular}{|l||"+ 'c|'*columns +"}\n\t\\hline\n\t" + 
-                r1 + "\n\t\\hline\\hline\n\t" + r2 + "\n\t\\hline\n\t" + "\n") 
-    output += "\\end{tabular}"
+        output += str(a) + " & " + str(b) + "\\\\\n\\hline"
+    output += post
     
-    fileName = BUILD + "raspr.tex"
+    fileName = BUILD + BasicName + ".tex"
     file = open(fileName,'w')
-    print(file)
-    print(output)
     file.write(output)
     file.close()
 
@@ -140,39 +150,21 @@ def getOneVar(fileName: str):
             return float(x)
     file.close()
 
-def X():
-    fileName = BUILD + "X.txt"
+def txt2tex_for_single_value(BasicName :str):
+    fileName = BUILD + BasicName + ".txt"
     res = getOneVar(fileName)
-    text = "\\textbf{$X$}: $" + str(res) + "$\\\\"
-    fileName = BUILD + "X.tex"
-    file = open(fileName,'w')
-    file.write(text)
-    file.close()
-
-def S():
-    fileName = BUILD + "S.txt"
-    res = getOneVar(fileName)
-    text = "\\textbf{$S$}: $" + str(res) + "$\\\\"
-    fileName = BUILD + "S.tex"
-    file = open(fileName,'w')
-    file.write(text)
-    file.close()
-
-def _S():
-    fileName = BUILD + "_S.txt"
-    res = getOneVar(fileName)
-    text = "\\textbf{$S^-$}: $" + str(res) + "$\\\\"
-    fileName = BUILD + "_S.tex"
+    text = "\\textbf{" + BasicName + "}: $" + str(res) + "$\\\\"
+    fileName = BUILD + BasicName + ".tex"
     file = open(fileName,'w')
     file.write(text)
     file.close()
 
 def main():
-    foo()
-    raspr()
-    X()
-    S()
-    _S()
+    foo("empiricalFunction")
+    raspr("groupedSelection")
+    txt2tex_for_single_value("expectedValue")
+    txt2tex_for_single_value("biasedSampleVariance")
+    txt2tex_for_single_value("unbiasedSampleVariance")
     return 0
 
 if __name__ == '__main__':

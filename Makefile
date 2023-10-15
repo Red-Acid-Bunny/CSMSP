@@ -9,7 +9,7 @@ MAIN_SRC := ./result.tex
 SET_FILE_PATH := ./Settings.txt
 
 COMPILER_TEX_PREFIX := TEXINPUTS=".:$(BUILD_PDF):"
-COMPILER_TEX_FLAGS := -output-directory $(BUILD_PDF)/ $(MAIN_SRC)
+COMPILER_TEX_FLAGS := -output-directory $(BUILD_PDF) $(MAIN_SRC)
 COMPILER_TEX := $(COMPILER_TEX_PREFIX) pdflatex $(COMPILER_TEX_FLAGS)
 
 GET_SET := bash $(FUNCTIONS_PATH)/GetSetting.sh $(SET_FILE_PATH)
@@ -32,7 +32,7 @@ add_src_tex: $(BUILD_PDF)
 # Interval Sample Mode
 IntervalSample: $(MODE)_get_result
 	echo $@
-	#python3 generateLatexAns.py
+	python3 generateLatexAns.py
 
 IntervalSample_get_result: $(MODE)_preparing_input_data
 	echo $@
